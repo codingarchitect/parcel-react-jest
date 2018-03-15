@@ -1,0 +1,27 @@
+{
+  "name": "parcel-react-jest",
+  "version": "1.0.0",
+  "description": "parcel-react-jest",
+  "main": "index.js",
+  "author": "sendhil.r@gmail.com",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel index.html",
+    "test": "jest --watch"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^22.4.2",
+    "parcel-bundler": "^1.6.2"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./setup-tests.js"
+  }
+}

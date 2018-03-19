@@ -3,6 +3,5 @@ export function loadPage1Plugins() {
     console.log(componentMetadata);
   }, function(error) {
     console.error(error);
-  });
-  
+  });  
 }

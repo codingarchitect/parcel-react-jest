@@ -4,7 +4,8 @@ import { Component }    from 'react';
 // Importing some assets
 import './App.css';
 import logo from './logo.svg';
-import plugins from './pages/**/*.component.js';
+import page1Plugins from './pages/page1/**/*.component.js';
+import page2Plugins from './pages/page2/**/*.component.js';
 
 class App extends Component {
     constructor() {
@@ -14,9 +15,11 @@ class App extends Component {
             componentMeta: {},
         };
     }
-    loadComponentMeta() {
-        console.info(`this is the loaded component meta`);
-        this.setState({ componentMeta: plugins });
+    loadComponentMeta(page) {
+        console.info(`this is the loaded component meta for '${page}' components`);
+        page === 'page1' ?
+            this.setState({ componentMeta: page1Plugins }) :
+            this.setState({ componentMeta: page2Plugins });
     }
     render() {
         return (
@@ -29,7 +32,8 @@ class App extends Component {
                 <p className="App-intro">
                    Hello World!
                 </p>
-                <button onClick={() => { this.loadComponentMeta() }}>Load Component Metadata to TextArea</button>
+                <button onClick={() => { this.loadComponentMeta('page1') }}>Load Page 1 Component Metadata to TextArea</button>
+                <button onClick={() => { this.loadComponentMeta('page2') }}>Load Page 2 Component Metadata to TextArea</button>
                 <br />
                 <textarea rows="10" cols="80" readOnly
                     value={ this.state && this.state.componentMeta ? JSON.stringify(this.state.componentMeta, undefined, 2) : '{}' } />

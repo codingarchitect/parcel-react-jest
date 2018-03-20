@@ -4,6 +4,7 @@ import { Component }    from 'react';
 // Importing some assets
 import './App.css';
 import logo from './logo.svg';
+import plugins from './pages/**/*.component.js';
 
 class App extends Component {
     constructor() {
@@ -13,9 +14,9 @@ class App extends Component {
             componentMeta: {},
         };
     }
-    loadComponentMeta(page) {
-        console.info(`loading component meta for ${page}`)
-        this.setState({ componentMeta: require(`./pages/${page}/**/*.component.js`) });
+    loadComponentMeta() {
+        console.info(`this is the loaded component meta`);
+        this.setState({ componentMeta: plugins });
     }
     render() {
         return (
@@ -28,8 +29,7 @@ class App extends Component {
                 <p className="App-intro">
                    Hello World!
                 </p>
-                <button onClick={() => { this.loadComponentMeta('page1') }}>Load Page 1 Plugins</button>
-                <button onClick={() => { this.loadComponentMeta('page2') }}>Load Page 2 Plugins</button>
+                <button onClick={() => { this.loadComponentMeta() }}>Load Component Metadata to TextArea</button>
                 <br />
                 <textarea rows="10" cols="80" readOnly
                     value={ this.state && this.state.componentMeta ? JSON.stringify(this.state.componentMeta, undefined, 2) : '{}' } />
